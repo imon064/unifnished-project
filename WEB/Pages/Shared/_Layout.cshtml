@@ -1,0 +1,60 @@
+﻿@* Tambahkan ini di atas jika belum ada untuk mengakses info pengguna *@
+@using System.Security.Claims
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BelanjaYuk</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-container">
+                <a class="navbar-brand" asp-page="/Index">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.5 18C8.32843 18 9 17.3284 9 16.5C9 15.6716 8.32843 15 7.5 15C6.67157 15 6 15.6716 6 16.5C6 17.3284 6.67157 18 7.5 18Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M17.5 18C18.3284 18 19 17.3284 19 16.5C19 15.6716 18.3284 15 17.5 15C16.6716 15 16 15.6716 16 16.5C16 17.3284 16.6716 18 17.5 18Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        <path d="M3.06006 3H5.06006L7.68006 12.39C7.77143 12.7214 7.95759 13.0186 8.21634 13.242C8.47509 13.4654 8.7919 13.6038 9.12006 13.64H16.88C17.2082 13.6038 17.525 13.4654 17.7838 13.242C18.0425 13.0186 18.2287 12.7214 18.32 12.39L20.94 6H6.06006" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                    BelanjaYuk
+                </a>
+
+                <div class="nav-links">
+                    <!-- ============ LOGIKA BARU DI NAVBAR ============ -->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <span class="nav-user-info">
+                            Halo, <strong>@User.Identity.Name</strong>
+                        </span>
+                        <a class="btn-nav" asp-page="/Logout">Keluar</a>
+                    }
+                    else
+                    {
+                        <a class="btn-nav" asp-page="/Login">Masuk</a>
+                        <a class="btn-nav btn-nav-outline" asp-page="/Register">Daftar</a>
+                    }
+                    <!-- ============================================== -->
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            &copy; 2025 - BelanjaYuk
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

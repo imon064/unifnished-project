@@ -1,0 +1,70 @@
+﻿@page
+@model belanjaYuk.WEB.Pages.DetailModel
+@{
+    ViewData["Title"] = "Detail Produk";
+}
+
+<div class="main-content">
+    @if (Model.Product != null)
+    {
+        <div class="detail-page-container">
+            <div class="detail-content-left">
+
+                <div class="detail-product-image-card">
+                    <div class="product-image-placeholder-large">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" fill="#e0e0e0" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V162.92l-43.06-43.06a16,16,0,0,0-22.63,0L132.69,137.5,99.31,104.12a16,16,0,0,0-22.62,0L40,141.5V56ZM40,172.69l48-48L124.69,161.3a16,16,0,0,0,22.62,0L184,124.69,216,156.69V200H40ZM192,80a12,12,0,1,1,12,12A12,12,0,0,1,192,80Z"></path></svg>
+                    </div>
+                </div>
+
+                <div class="detail-store-info-card">
+                    <div class="store-avatar-placeholder"></div>
+                    <div class="store-info">
+                        <h4 class="store-name">@Model.Product.StoreName</h4>
+                        <span class="store-status">Online</span>
+                    </div>
+                </div>
+
+                <div class="detail-desc-card">
+                    <h3>Deskripsi Produk</h3>
+                    <p>@Model.Product.ProductDesc</p>
+                </div>
+
+            </div>
+
+            <div class="detail-content-right">
+
+                <div class="detail-buy-card">
+                    <span class="detail-category">@Model.Product.CategoryName</span>
+                    <h2 class="detail-product-name">@Model.Product.ProductName</h2>
+                    <p class="detail-product-price">Rp @Model.Product.Price.ToString("N0")</p>
+
+                    <hr class="divider">
+
+                    <h3>Atur jumlah</h3>
+                    <div class="quantity-selector">
+                        <button class="qty-btn" type="button">-</button>
+                        <input type="number" class="qty-input" value="1" min="1" max="99">
+                        <button class="qty-btn" type="button">+</button>
+                    </div>
+
+                    <hr class="divider">
+
+                    <div class="total-price">
+                        <span>Total Harga</span>
+                        <p class="detail-product-price">Rp @Model.Product.Price.ToString("N0")</p>
+                    </div>
+
+                    <div class="buy-actions">
+                        <button class="btn btn-secondary-outline">+ Keranjang</button>
+                        <button class="btn btn-primary">Beli Langsung</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <p>Produk tidak ditemukan.</p>
+    }
+</div>
+

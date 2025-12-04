@@ -1,0 +1,71 @@
+﻿@page
+@model belanjaYuk.WEB.Pages.IndexModel
+@{
+    ViewData["Title"] = "Beranda";
+}
+
+<div class="main-content">
+
+    <div class="content-left">
+
+        <div class="promo-banner">
+            <h2>Belanja jadi mudah, cepat, dan hemat</h2>
+            <p>Temukan jutaan produk berkualitas dengan harga terbaik hanya di Belanja Yuk.</p>
+        </div>
+
+        <h2>Barang Rekomendasi</h2>
+
+        <div class="product-grid">
+            @if (Model.Products != null && Model.Products.Any())
+            {
+                @foreach (var product in Model.Products)
+                {
+                    <a asp-page="/Detail" asp-route-id="@product.IdProduct" class="product-card-link">
+                        <div class="product-card">
+                            <div class="product-image-placeholder">
+                                @* placeholder *@
+                                <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="#ddd" viewBox="0 0 256 256"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,16V162.92l-43.06-43.06a16,16,0,0,0-22.63,0L132.69,137.5,99.31,104.12a16,16,0,0,0-22.62,0L40,141.5V56ZM40,172.69l48-48L124.69,161.3a16,16,0,0,0,22.62,0L184,124.69,216,156.69V200H40ZM192,80a12,12,0,1,1,12,12A12,12,0,0,1,192,80Z"></path></svg>
+                            </div>
+                            <div class="product-info">
+                                <h3 class="product-name">@product.ProductName</h3>
+                                <p class="product-price">Rp @product.Price.ToString("N0")</p>
+                                <span class="product-category">@product.CategoryName</span>
+                                <span class="product-store">@product.StoreName</span>
+                            </div>
+                        </div>
+                    </a>
+                }
+            }
+            else
+            {
+                <p>Tidak ada produk untuk ditampilkan.</p>
+            }
+        </div>
+
+    </div>
+
+    <div class="content-right">
+        <div class="user-card">
+            <div class="user-card-header">
+                <div class="user-card-avatar">
+                    @*  placeholder  *@
+                </div>
+                <div class="user-card-greeting">
+                    <p>Halo,</p>
+                    <h4>Andi</h4>
+                </div>
+            </div>
+            <div class="user-card-body">
+                <div class="user-card-balance">
+                    <p>Saldo Anda</p>
+                    <h4>Rp 1.250.000</h4>
+                </div>
+                <div class="user-card-actions">
+                    <button class="btn btn-secondary-outline btn-sm">Top Up</button>
+                    <button class="btn btn-secondary-outline btn-sm">Tarik Saldo</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

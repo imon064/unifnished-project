@@ -1,0 +1,99 @@
+﻿@page
+@model belanjaYuk.WEB.Pages.RegisterModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Akun - Belanja Yuk</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body class="login-page-body">
+    <div class="login-page-container">
+
+        <div class="login-promo-panel">
+            <h1>Belanja Yuk</h1>
+            <p>Platform e-commerce pilihan generasi baru. Daftar sekarang dan nikmati berbagai kemudahan.</p>
+        </div>
+
+        <div classs="login-form-panel">
+            <form method="post" class="register-form">
+                <h2>Daftar Akun</h2>
+                <p>Silakan isi data diri Anda untuk membuat akun baru.</p>
+
+                <div asp-validation-summary="ModelOnly" class="validation-summary"></div>
+
+                <div class="form-grid">
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label asp-for="RegisterInput.UserName">Username</label>
+                            <input asp-for="RegisterInput.UserName" class="form-control" placeholder="cth: andi01" />
+                            <span asp-validation-for="RegisterInput.UserName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RegisterInput.Email">Email</label>
+                            <input asp-for="RegisterInput.Email" class="form-control" type="email" placeholder="cth: andi@example.com" />
+                            <span asp-validation-for="RegisterInput.Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RegisterInput.PhoneNumber">Nomor HP</label>
+                            <input asp-for="RegisterInput.PhoneNumber" class="form-control" type="tel" placeholder="cth: 08123456789" />
+                            <span asp-validation-for="RegisterInput.PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RegisterInput.FirstName">Nama Depan</label>
+                            <input asp-for="RegisterInput.FirstName" class="form-control" placeholder="cth: Andi" />
+                            <span asp-validation-for="RegisterInput.FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RegisterInput.LastName">Nama Belakang</label>
+                            <input asp-for="RegisterInput.LastName" class="form-control" placeholder="cth: Budiman (opsional)" />
+                            <span asp-validation-for="RegisterInput.LastName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label asp-for="RegisterInput.Dob">Tanggal Lahir</label>
+                            <input asp-for="RegisterInput.Dob" class="form-control" type="date" />
+                            <span asp-validation-for="RegisterInput.Dob" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RegisterInput.IdGender">Jenis Kelamin</label>
+                            <select asp-for="RegisterInput.IdGender" class="form-control">
+                                <option value="">-- Pilih Jenis Kelamin --</option>
+                                <option value="GEN001">Laki-Laki</option>
+                                <option value="GEN002">Perempuan</option>
+                            </select>
+                            <span asp-validation-for="RegisterInput.IdGender" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RegisterInput.Password">Password</label>
+                            <input asp-for="RegisterInput.Password" class="form-control" type="password" />
+                            <span asp-validation-for="RegisterInput.Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="RegisterInput.ConfirmPassword">Konfirmasi Password</label>
+                            <input asp-for="RegisterInput.ConfirmPassword" class="form-control" type="password" />
+                            <span asp-validation-for="RegisterInput.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-full">Daftar Sekarang</button>
+                </div>
+
+                <div class="form-footer">
+                    Sudah punya akun? <a asp-page="/Login">Masuk di sini</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</body>
+</html>

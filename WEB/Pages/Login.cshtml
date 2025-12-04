@@ -1,0 +1,81 @@
+﻿@page
+@model belanjaYuk.WEB.Pages.LoginModel
+@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BelanjaYuk</title>
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-promo-card">
+            <div class="promo-content">
+                <div class="promo-logo-placeholder"></div>
+                <div class="promo-text-placeholder"></div>
+            </div>
+            <h3>BelanjaYuk - Lebih fun, lebih cepat</h3>
+            <p>Voucher eksklusif, pengiriman cepat, dan layanan terpercaya di satu tempat.</p>
+            <ul>
+                <li>Harga Jujur</li>
+                <li>Bebas COD</li>
+                <li>Admin Ramah</li>
+            </ul>
+            <a href="/" class="promo-guest-link">Pengguna Tamu</a>
+        </div>
+
+        <div class="login-form-card">
+            <h2>Hai, selamat datang kembali 👋</h2>
+            <p class="login-subtitle">Masuk pakai alamat email/No. HP yang terdaftar.</p>
+
+            <form method="post" class="login-form">
+
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div classa="validation-summary-errors">
+                        <ul>
+                            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                            {
+                                <li>@error.ErrorMessage</li>
+                            }
+                        </ul>
+                    </div>
+                }
+
+                <div class="form-group">
+                    <label asp-for="LoginInput.EmailOrPhone">Email/No. HP</label>
+                    <input asp-for="LoginInput.EmailOrPhone" class="form-control" placeholder="contoh@gmail.com / 0812..." />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LoginInput.Password">Kata Sandi</label>
+                    <input asp-for="LoginInput.Password" type="password" class="form-control" placeholder="••••••••" />
+                </div>
+
+                <div class="form-options">
+                    <div class="form-check">
+                        <input asp-for="LoginInput.RememberMe" type="checkbox" class="form-check-input" />
+                        <label asp-for="LoginInput.RememberMe" class="form-check-label">Ingat saya</label>
+                    </div>
+                    <a href="#">Lupa kata sandi?</a>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Masuk</button>
+            </form>
+
+            <a href="/" class="btn btn-secondary btn-block">Lanjut tanpa akun</a>
+
+            <p class="register-link">
+                Belum punya akun? <a href="/Register">Daftar sekarang</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
+
